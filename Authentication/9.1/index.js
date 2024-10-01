@@ -1,9 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import bcrypt, { hash } from "bcrypt";
 
 const app = express();
 const port = 3000;
+const saltRounds = 10;
+
 const db = new pg.Client({
   user: "postgres",
   password: "saikiran",
@@ -40,11 +43,14 @@ app.post("/register", async (req, res) => {
     if (response.length > 0) {
       res.send("User already exists.");
     } else {
-      await db.query("insert into userpass values ($1, $2)", [
-        username,
-        password,
-      ]);
-      const { rows: response } = await db.query("select * from userpass");
+      bcrypt.hash(password, saltRounds, async (error, hash) => {
+        await db.query("insert into userpass values ($1, $2)", [
+          username,
+          hash,
+        ]);
+        const { rows: response } = await db.query("select * from userpass");
+      });
+
       console.log(response);
       res.render("login.ejs");
     }
@@ -60,14 +66,13 @@ app.post("/login", async (req, res) => {
     "select * from userpass where username = $1",
     [username]
   );
-  console.log(response);
-  console.log(response[0].password, password);
-
-  if (response[0].password === password) {
-    res.render("secrets.ejs");
-  } else {
-    res.redirect("/");
-  }
+  bcrypt.compare(password, response[0].password, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("secrets.ejs");
+    }
+  });
 });
 
 app.listen(port, () => {
