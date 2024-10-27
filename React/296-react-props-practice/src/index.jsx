@@ -3,27 +3,21 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import contacts from "./contacts";
 
+function createCard(contact) {
+  return (
+    <App
+      key={contact.id}
+      id={contact.id}
+      name={contact.name}
+      url={contact.imgURL}
+      phone={contact.phone}
+      email={contact.email}
+    />
+  );
+}
+
 ReactDOM.render(
-  <div>
-    <App
-      name={contacts[0].name}
-      url={contacts[0].imgURL}
-      phone={contacts[0].phone}
-      email={contacts[0].email}
-    />
-    <App
-      name={contacts[1].name}
-      url={contacts[1].imgURL}
-      phone={contacts[1].phone}
-      email={contacts[1].email}
-    />
-    <App
-      name={contacts[2].name}
-      url={contacts[2].imgURL}
-      phone={contacts[2].phone}
-      email={contacts[2].email}
-    />
-  </div>,
+  <div>{contacts.map(createCard)}</div>,
   document.getElementById("root")
 );
 

@@ -1,0 +1,20 @@
+.emoji {
+  width: 25vw;
+  text-align: center;
+  border: 5px solid black;
+  padding-bottom: 30px;
+  margin: 25vh;
+}
+
+.main_heading {
+  text-align: center;
+}
+
+.emoji_list {
+  display: inline-block;
+}
+
+#root {
+  display: flex;
+  flex-wrap: wrap;
+}
