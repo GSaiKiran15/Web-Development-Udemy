@@ -2,10 +2,7 @@ import React from "react";
 
 function App() {
   return (
-    <div>
-      <h1>
-        <span>emojipedia</span>
-      </h1>
+    
 
       <dl className="dictionary">
         <div className="term">
@@ -47,7 +44,6 @@ function App() {
           </dd>
         </div>
       </dl>
-    </div>
   );
 }
 
