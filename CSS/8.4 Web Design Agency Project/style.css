@@ -2,12 +2,25 @@ body {
   font-family: "Poppins", sans-serif;
   margin: 50px 50px 0 50px;
   background-color: #faf9f6;
-  /* min-height: 95vh; */
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
 }
-
+.main {
+  flex: 1;
+}
 
 h1 {
   font-size: 5rem;
+}
+
+@media (min-width: 481px) and (max-width: 1600px){
+  .cards{
+    display: inline-flex;
+  }
+  .card{
+    margin: 10px;
+  }
 }
 
 footer {
@@ -15,17 +28,3 @@ footer {
   color: midnightblue;
 }
 
-@media (min-width: 600px){
-  .main{
-    display: flex;
-    flex-direction: row;
-  }
-
-  img{
-    width: 100px;
-  }
-
-  .card {
-    width: 500px;
-  }
-}
