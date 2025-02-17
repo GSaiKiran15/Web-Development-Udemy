@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0; /* Ensuring no default margin */
+}
+
 .gradient-background {
   background: linear-gradient(300deg, #00bfff, #ff4c68, #ef8172);
   background-size: 180% 180%;
@@ -26,3 +31,46 @@
   height: 100px;
   border-radius: 50%;
 }
+
+#title {
+  height: 100vh;
+  padding-bottom: -100px; /* Adjust this value to your needs */
+}
+
+.companies{
+  display: flex;
+  justify-content: center;
+}
+
+.companies > img{
+  width: 150px;
+  height: 25px;
+  margin: 50px 100px;
+}
+
+ .m{
+  text-align: center;
+}
+
+.a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+} 
+
+#picture{
+  border-radius: 50%;
+  width: 150px;
+}
+
+#pricing{
+  display: flex;
+  justify-content: center;
+}
+
+/* .m{
+  display: flex;
+} */
